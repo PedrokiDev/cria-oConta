@@ -1,33 +1,20 @@
 <?php
 
-class Titular
+class Titular extends Pessoa
 {
-    private CPF $cpf;
-    private string $nome;
 
-    public function __construct(CPF $cpf, string $nome)
+    private Endereco $endereco;
+
+    public function __construct(CPF $cpf, string $nome, Endereco $endereco)
     {
         $this->cpf = $cpf;
         $this->nome = $nome;
-        $this->validaNomeTitular($nome);
-    }
-
-    public function recuperaCpf(): string
-    {
-        return $this->cpf->recuperaNumero();
-    }
-
-    public function recuperaNome(): string
-    {
-        return $this->nome;
+        $this->endereco = $endereco;
     }
 
 
-    private function validaNomeTitular(string $nomeTitular)
+    public function recuperaEndereco(): Endereco
     {
-        if (strlen($nomeTitular) < 5) {
-            echo "Nome precisa ter mais de 5 caracteres.";
-            exit();
-        }
+        return $this->endereco;
     }
 }
